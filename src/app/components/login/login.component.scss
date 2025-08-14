@@ -1,0 +1,159 @@
+@use "sass:color";
+
+/* ===========================
+   VARIABLES
+=========================== */
+$primary-color: #4361ee;
+$error-color: #f72585;
+$text-color: #2b2d42;
+$light-gray: #f8f9fa;
+$medium-gray: #adb5bd;
+$white: #ffffff;
+
+/* ===========================
+   FLIP CONTAINER
+=========================== */
+.flip-container {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin: 0 auto;
+  position: relative; // para que front/back se posicionen dentro
+}
+
+.flipper {
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.flip-container.flipped .flipper {
+  transform: rotateY(180deg);
+}
+
+/* ===========================
+   TARJETA LOGIN / REGISTER
+=========================== */
+.login-container {
+  background-color: $white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  max-height: 90vh; // limita altura
+  overflow-y: auto; // scroll interno si excede
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .login-title {
+    color: $text-color;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  .input-group {
+    margin-bottom: 1.5rem;
+
+    .input-label {
+      display: block;
+      color: $text-color;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid $medium-gray;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+      }
+
+      &.invalid {
+        border-color: $error-color;
+      }
+
+      &::placeholder {
+        color: color.adjust($medium-gray, $lightness: 10%);
+      }
+    }
+
+    .error-message {
+      display: block;
+      color: $error-color;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+
+      i {
+        margin-right: 0.3rem;
+      }
+    }
+  }
+
+  .submit-btn {
+    width: 100%;
+    background-color: $primary-color;
+    color: $white;
+    border: none;
+    padding: 1rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 0.5rem;
+
+    &:hover {
+      background-color: color.adjust($primary-color, $lightness: -10%);
+    }
+
+    &:disabled {
+      background-color: $medium-gray;
+      cursor: not-allowed;
+    }
+  }
+
+  .links-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid color.adjust($medium-gray, $lightness: 15%);
+
+    .text-link {
+      color: $primary-color;
+      text-decoration: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: color 0.2s;
+
+      &:hover {
+        color: color.adjust($primary-color, $lightness: -15%);
+        text-decoration: underline;
+      }
+    }
+  }
+}

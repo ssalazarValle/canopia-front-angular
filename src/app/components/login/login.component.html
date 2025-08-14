@@ -1,0 +1,95 @@
+<div class="flip-container" [class.flipped]="isFlipped">
+  <div class="flipper">
+
+    
+    <div class="front login-container">
+      <div class="login-card">
+        <h1 class="login-title">Iniciar Sesión</h1>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+          
+          <div class="input-group">
+            <label for="username" class="input-label">Usuario</label>
+            <input
+              type="text"
+              id="username"
+              formControlName="username"
+              class="input-field"
+              placeholder="Ingrese su usuario"
+              [class.invalid]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+            <span class="error-message" *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+              <i class="pi pi-exclamation-circle"></i> Usuario es requerido
+            </span>
+          </div>
+
+          
+          <div class="input-group">
+            <label for="password" class="input-label">Contraseña</label>
+            <input
+              type="password"
+              id="password"
+              formControlName="password"
+              class="input-field"
+              placeholder="Ingrese su contraseña"
+              [class.invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+            <span class="error-message" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+              <i class="pi pi-exclamation-circle"></i> Contraseña es requerida
+            </span>
+          </div>
+
+          <button type="submit" class="submit-btn" [disabled]="loginForm.invalid">
+            Ingresar
+          </button>
+
+          <div class="links-container">
+            <a (click)="toggleFlip()" class="text-link">Registrarse</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="back login-container">
+      <div class="login-card">
+        <h1 class="login-title">Registro</h1>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
+          
+          <div class="input-group">
+            <label for="reg-username" class="input-label">Usuario</label>
+            <input type="text" id="reg-username" formControlName="username" class="input-field" placeholder="Usuario">
+          </div>
+
+          
+          <div class="input-group">
+            <label for="email" class="input-label">Correo</label>
+            <input type="email" id="email" formControlName="email" class="input-field" placeholder="Correo electrónico">
+          </div>
+
+          
+          <div class="input-group">
+            <label for="reg-password" class="input-label">Contraseña</label>
+            <input type="password" id="reg-password" formControlName="password" class="input-field" placeholder="Contraseña">
+          </div>
+
+          
+          <div class="input-group">
+            <label for="role" class="input-label">Rol</label>
+            <select id="role" formControlName="role" class="input-field">
+              <option value="user">Usuario</option>
+              <option value="admin">Administrador</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-btn" [disabled]="registerForm.invalid">
+            Crear cuenta
+          </button>
+
+          <div class="links-container">
+            <a (click)="toggleFlip()" class="text-link">Ya tengo cuenta</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
