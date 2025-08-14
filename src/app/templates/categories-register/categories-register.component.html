@@ -1,0 +1,62 @@
+<div class="category-form">
+  
+  <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()" class="p-fluid">
+    <!-- Nombre -->
+    <div class="p-field">
+      <p-floatlabel>
+        <input 
+          pInputText 
+          id="name" 
+          formControlName="name"
+          [class.p-invalid]="categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched"
+        />
+        <label for="name">Nombre de la Categoría</label>
+      </p-floatlabel>
+      @if (categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched) {
+        <small class="p-error">
+          @if (categoryForm.get('name')?.errors?.['required']) {
+            Este campo es requerido
+          }
+          @if (categoryForm.get('name')?.errors?.['maxlength']) {
+            Máximo 50 caracteres
+          }
+        </small>
+      }
+    </div>
+
+    <!-- Descripción -->
+    <div class="p-field">
+      <p-floatlabel>
+        <input 
+          pInputText 
+          id="description" 
+          formControlName="description"
+          [class.p-invalid]="categoryForm.get('description')?.invalid && categoryForm.get('description')?.touched"
+        />
+        <label for="description">Descripción</label>
+      </p-floatlabel>
+      @if (categoryForm.get('description')?.invalid && categoryForm.get('description')?.touched) {
+        <small class="p-error">
+          @if (categoryForm.get('description')?.errors?.['required']) {
+            Este campo es requerido
+          }
+          @if (categoryForm.get('description')?.errors?.['maxlength']) {
+            Máximo 200 caracteres
+          }
+        </small>
+      }
+    </div>
+
+    <!-- Botones -->
+    <div class="p-field flex justify-content-end gap-2">
+      <button 
+        pButton 
+        type="submit" 
+        label="Guardar"
+        icon="pi pi-check"
+        class="p-button-primary"
+        [disabled]="categoryForm.invalid"
+      ></button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,50 @@
+<div class="card container-tabs">
+    <p-tabs value="0">
+        <p-tablist>
+            <p-tab value="0">Productos</p-tab>
+            <p-tab value="1">Categorias</p-tab>
+        </p-tablist>
+        <p-tabpanels>
+
+            <p-tabpanel value="0">
+              <p-button
+                class="button-add"
+                icon="pi pi-plus"
+                label="Agregar Producto"
+                (click)="openDialog('product')"
+              ></p-button>
+              @if (productsList().length > 1) {
+                <app-table
+                  [options]="''"
+                  [cols]="colsProducts()"
+                  [items]="productsList()"
+                >
+                </app-table>
+              } @else {
+                <p>No hay productos disponibles.</p>
+              }
+
+            </p-tabpanel>
+            <p-tabpanel value="1">
+                <p-button
+                  class="button-add"
+                  icon="pi pi-plus"
+                  label="Agregar Categoria"
+                  (click)="openDialog('category')"
+                ></p-button>
+              @if (categoriesList().length > 1) {
+              <app-table
+                [options]="''"
+                [cols]="colsCategories()"
+                [items]="categoriesList()"
+              >
+              </app-table>
+              } @else {
+                <p>No hay categorías disponibles.</p>
+              }
+
+            </p-tabpanel>
+        </p-tabpanels>
+    </p-tabs>
+</div>
+

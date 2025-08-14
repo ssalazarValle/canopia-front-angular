@@ -1,0 +1,131 @@
+<div class="product-form">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="p-fluid">
+    <!-- Nombre -->
+    <div class="p-field">
+      <p-floatlabel>
+        <input 
+          pInputText 
+          id="name" 
+          formControlName="name"
+          [class.p-invalid]="productForm.get('name')?.invalid && productForm.get('name')?.touched"
+        />
+        <label for="name">Nombre del Producto</label>
+      </p-floatlabel>
+      @if (productForm.get('name')?.invalid && productForm.get('name')?.touched) {
+        <small class="p-error">
+          @if (productForm.get('name')?.errors?.['required']) {
+            Este campo es requerido
+          }
+          @if (productForm.get('name')?.errors?.['maxlength']) {
+            Máximo 50 caracteres
+          }
+        </small>
+      }
+    </div>
+
+    <!-- Descripción -->
+    <div class="p-field">
+      <p-floatlabel>
+        <input 
+          pInputText 
+          id="description" 
+          formControlName="description"
+          [class.p-invalid]="productForm.get('description')?.invalid && productForm.get('description')?.touched"
+        />
+        <label for="description">Descripción</label>
+      </p-floatlabel>
+      @if (productForm.get('description')?.invalid && productForm.get('description')?.touched) {
+        <small class="p-error">
+          @if (productForm.get('description')?.errors?.['required']) {
+            Este campo es requerido
+          }
+          @if (productForm.get('description')?.errors?.['maxlength']) {
+            Máximo 200 caracteres
+          }
+        </small>
+      }
+    </div>
+
+    <div class="grid">
+      <!-- Precio -->
+      <div class="col-12 md:col-6 p-field">
+        <p-floatlabel>
+          <p-inputNumber 
+            id="price" 
+            formControlName="price"
+            mode="currency" 
+            currency="USD" 
+            locale="en-US"
+            [min]="0"
+            [class.p-invalid]="productForm.get('price')?.invalid && productForm.get('price')?.touched"
+          ></p-inputNumber>
+          <label for="price">Precio</label>
+        </p-floatlabel>
+        @if (productForm.get('price')?.invalid && productForm.get('price')?.touched) {
+          <small class="p-error">
+            @if (productForm.get('price')?.errors?.['required']) {
+              Este campo es requerido
+            }
+            @if (productForm.get('price')?.errors?.['min']) {
+              El valor mínimo es 0
+            }
+          </small>
+        }
+      </div>
+
+      <!-- Stock -->
+      <div class="col-12 md:col-6 p-field">
+        <p-floatlabel>
+          <p-inputNumber 
+            id="stock" 
+            formControlName="stock"
+            [min]="0"
+            [class.p-invalid]="productForm.get('stock')?.invalid && productForm.get('stock')?.touched"
+          ></p-inputNumber>
+          <label for="stock">Stock</label>
+        </p-floatlabel>
+        @if (productForm.get('stock')?.invalid && productForm.get('stock')?.touched) {
+          <small class="p-error">
+            @if (productForm.get('stock')?.errors?.['required']) {
+              Este campo es requerido
+            }
+            @if (productForm.get('stock')?.errors?.['min']) {
+              El valor mínimo es 0
+            }
+          </small>
+        }
+      </div>
+    </div>
+
+    <!-- Categoría -->
+    <div class="p-field">
+      <p-floatlabel>
+        <p-dropdown 
+          id="category"
+          formControlName="category_name"
+          [options]="categories()" 
+          optionValue="name"
+          optionLabel="name"
+          [showClear]="true"
+          [class.p-invalid]="productForm.get('category_name')?.invalid && productForm.get('category_name')?.touched"
+        ></p-dropdown>
+        <label for="category">Categoría</label>
+      </p-floatlabel>
+      @if (productForm.get('category_name')?.invalid && productForm.get('category_name')?.touched) {
+        <small class="p-error">Este campo es requerido</small>
+      }
+    </div>
+
+    <!-- Botón de enviar -->
+    <div class="p-field">
+      <button 
+        pButton 
+        type="submit" 
+        label="Guardar Producto"
+        icon="pi pi-check"
+        class="w-full p-button-primary"
+        [disabled]="productForm.invalid"
+      ></button>
+    </div>
+  </form>
+</div>

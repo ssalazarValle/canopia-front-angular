@@ -1,0 +1,121 @@
+
+
+
+.Toltip {
+  display: flex;
+  justify-content: center;
+}
+
+.Title {
+  font-size: 28px;
+  font-family: var(--font-poppins--Regular);
+  color: black;
+}
+
+
+.accionButtons {
+  width: auto;
+  display: flex;
+  justify-content: flex-end;
+  min-height: 100%;
+  max-width: max-content;
+
+  ::ng-deep button.p-ripple.p-element.p-button.p-component.p-button-icon-only.p-button-rounded.p-button-text.p-button-plain {
+    color: #363636;
+  }
+  ::ng-deep button.p-ripple.p-element.p-button.p-component.p-button-icon-only.p-button-rounded.p-button-text.p-button-plain:hover {
+    color: #9933f0;
+  }
+}
+
+.action-column {
+  height: 3.8rem !important;
+  position: sticky;
+  right: 0;
+  display: flex;
+  background-color: #f9f9fb;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px;
+  justify-content: center;
+  display: flex;
+  justify-content: flex-end;
+
+
+  .full-width {
+    width: 100% !important;
+  }
+
+  .reduce-width {
+    width: max-content;
+    /* O un ancho específico, si prefieres */
+    /* width: 50px; */
+  }
+
+}
+
+.content-rows-data {
+  padding: 1px 1rem;
+  height: 55px;
+  margin: auto;
+  width: max-content;
+}
+
+.Status-Row-Container {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+
+
+  .Status-Container {
+    border-radius: 26px;
+    color: #ffffff;
+    width: 109px;
+    text-align: center;
+  }
+  .date-status {
+    font-size: 10px;
+    text-align: center;
+    padding: 0%;
+    margin: 0%;
+  }
+
+  .Status-PaymentDate-Container {
+    padding: 0 0.5rem;
+    margin-top: 0.3rem;
+
+    .Status-PaymentDate-Value {
+      font-size: 0.675rem;
+      text-align: center;
+    }
+  }
+}
+
+
+.content-headers-table {
+  width: auto;
+
+  .final-header {
+    display: block;
+    width: max-content !important;
+  }
+
+}
+
+
+
+
+
+
+
+.action-column:hover {
+  background-color: #888689;
+  > span {
+    color: #9933f0;
+  }
+}
+
+
+
+
+

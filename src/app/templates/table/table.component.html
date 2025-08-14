@@ -1,0 +1,44 @@
+
+<p-table
+  [styleClass]="'shadow-box tableCustom'"
+  [columns]="cols()"
+  [value]="items()"
+  [tableStyle]="{ 'min-width': '50rem' }"
+>
+  <ng-template pTemplate="header" let-columns>
+    <tr class="content-headers-table">
+      <th *ngFor="let col of columns">{{ col.header }}</th>
+      @if (options().length > 1) {
+        <th class="final-header"> {{ options() }} </th>
+      }
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+    <tr>
+      @for (col of columns; track $index) {
+      <td class="content-rows-data">
+        <div class="Status-Row-Container">
+          <ng-container [ngSwitch]="col.field">
+            <ng-container *ngSwitchCase="'status'">
+              
+                @if (col.subField && rowData[col.subField]) {
+                  <p class="date-status">
+                    {{ rowData[col.subField] | date: "dd/MM/yyyy hh:mm a" }}
+                  </p>
+                }
+            </ng-container>
+            <ng-container *ngSwitchCase="'amount'">
+              {{ rowData[col.field] | currency }} {{ rowData.currencyCode }}
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+              {{ rowData[col.field] || '-' }}
+            </ng-container>
+          </ng-container>
+        </div>
+      </td>
+    }
+
+    </tr>
+  </ng-template>
+</p-table>

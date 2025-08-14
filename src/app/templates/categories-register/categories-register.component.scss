@@ -1,0 +1,37 @@
+.category-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    text-align: center;
+  }
+
+  .p-field {
+    margin-bottom: 1.5rem;
+
+    label {
+      font-weight: 500;
+    }
+  }
+
+  .p-inputtext, 
+  .p-inputtextarea, 
+  .p-dropdown, 
+  .p-inputnumber {
+    width: 100%;
+  }
+
+  .p-inputtextarea {
+    min-height: 100px;
+  }
+
+  button {
+    margin-top: 0.5rem;
+  }
+}
